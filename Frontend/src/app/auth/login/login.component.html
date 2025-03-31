@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="login-container">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <div class="logo">
+          <mat-icon class="logo-icon">account_balance_wallet</mat-icon>
+          <h1>Money Manager</h1>
+        </div>
+        <mat-card-title>Đăng nhập hệ thống</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" required>
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              Vui lòng nhập email
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+              Email không hợp lệ
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Mật khẩu</mat-label>
+            <input matInput formControlName="password" type="password" required>
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              Vui lòng nhập mật khẩu
+            </mat-error>
+          </mat-form-field>
+  
+          <div class="remember-forgot">
+            <mat-checkbox>Ghi nhớ đăng nhập</mat-checkbox>
+            <a routerLink="/forgot-password">Quên mật khẩu?</a>
+          </div>
+  
+          <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Đăng nhập</span>
+            <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
+          </button>
+        </form>
+      </mat-card-content>
+  
+      <mat-card-actions>
+        <p>Chưa có tài khoản? <a routerLink="/register">Đăng ký ngay</a></p>
+      </mat-card-actions>
+    </mat-card>
+  </div>
