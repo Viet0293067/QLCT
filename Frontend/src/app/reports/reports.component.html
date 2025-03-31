@@ -1,0 +1,40 @@
+<div class="reports-container">
+    <h2>Báo cáo Tài chính</h2>
+  
+    <div class="charts-container">
+      <!-- Monthly Comparison Chart -->
+      <div class="chart-card">
+        <h3>So sánh Thu/Chi theo Tháng</h3>
+        <div class="chart-wrapper">
+          <canvas baseChart
+            [data]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [type]="barChartType">
+          </canvas>
+        </div>
+      </div>
+  
+      <!-- Expense by Category Chart -->
+      <div class="chart-card">
+        <h3>Chi tiêu theo Danh mục</h3>
+        <div class="chart-wrapper">
+          <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [options]="pieChartOptions"
+            [type]="pieChartType">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  
+    <div class="export-actions">
+      <button mat-raised-button color="primary" (click)="exportToPDF()">
+        <mat-icon>picture_as_pdf</mat-icon> Xuất PDF
+      </button>
+      <button mat-raised-button color="accent" (click)="exportToExcel()">
+        <mat-icon>grid_on</mat-icon> Xuất Excel
+      </button>
+    </div>
+  </div>
